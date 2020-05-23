@@ -15,3 +15,9 @@ type Color struct {
 	G uint8
 	B uint8
 }
+
+func (color *Color) SetColor(red, green, blue uint8) {
+	color.R = red
+	color.G = green
+	color.B = blue
+}

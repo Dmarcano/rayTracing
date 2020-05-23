@@ -2,17 +2,40 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
+	"os"
 
 	"github.com/Dmarcan/rayTracing/ppmImage"
 	_ "github.com/Dmarcan/rayTracing/ppmImage"
-	"github.com/Dmarcan/rayTracing/vector"
 )
 
-func main() {
-	fmt.Printf("My favorite number is %d\n", rand.Int())
+func check(e error) {
+	if e != nil {
+		panic(e)
+	}
+}
 
-	color := vector.Color{R: 0, G: 0, B: 0}
-	_ = color
+func writePpm(img *ppmImage.PpmImage) {
+	f, err := os.Create("out/sample.ppm")
+	check(err)
+	defer f.Close()
+
+	for j := range img.Content {
+		row := img.Content[j]
+		for i := range row {
+			color := row[i]
+			line := fmt.Sprintf("%d %d %d\n", color.R, color.G, color.B)
+			_, err := f.WriteString(line)
+			check(err)
+		}
+		f.Sync()
+	}
+}
+
+func main() {
+
 	img := ppmImage.NewPPmImage(256, 256, 255)
+	ppmImage.SamplePpm(img)
+	// writePpm(img)
+	img.BufferedWrite("out/test.ppm")
+	fmt.Printf("Done!")
 }
