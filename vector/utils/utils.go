@@ -1,10 +1,12 @@
-package vector.utils
+package utils
 
 import (
-	. "github.com/Dmarcan/rayTracing/vector" 
+	. "github.com/Dmarcan/rayTracing/vector"
 )
 
-
-func Add(vec1, vec2 Vector3){
+/*
+Calculates the dot product of two vectors
+*/
+func VectorDot(vec1, vec2 Vector3) {
 
 }
