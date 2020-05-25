@@ -116,3 +116,12 @@ func (color *Color) Add(otherColor Color) {
 	color.G += otherColor.G
 	color.B += otherColor.B
 }
+
+/*
+	Sets the color
+*/
+func (color *Color) Set(otherColor Color) {
+	color.R = otherColor.R
+	color.G = otherColor.G
+	color.B = otherColor.B
+}
