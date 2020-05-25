@@ -9,7 +9,7 @@ Calculates the dot product of two vectors
 */
 
 /*
-	Mutates the vector and subtracts the second vector compoennts to it
+	returns a new vector which is equal to the component subtraction of two vectors
 */
 func Subtract(vec1, vec2 Vector3) *Vector3 {
 	newVec := new(Vector3)
@@ -35,7 +35,20 @@ func Add(vec1, vec2 Vector3) *Vector3 {
 }
 
 /*
-	Mutates the vector and multiplies the components by the  constant t
+
+Adds a constant double to the vector components
+*/
+func AddOffset(vec1 Vector3, t float64) *Vector3 {
+	newVec := new(Vector3)
+
+	newVec.X = vec1.X + t
+	newVec.Y = vec1.Y + t
+	newVec.Z = vec1.Z + t
+	return newVec
+}
+
+/*
+	returns a new vector which is equal to the component multiplication of the vector and a double
 */
 func Mult(vec Vector3, t float64) *Vector3 {
 	newVec := new(Vector3)
@@ -47,7 +60,7 @@ func Mult(vec Vector3, t float64) *Vector3 {
 }
 
 /*
-	Div function Mutates the vector and divides the components by the  constant t
+	returns a new vector which is equal to the component division of the vector and a double
 */
 func Div(vec Vector3, t float64) *Vector3 {
 	return Mult(vec, 1.0/t)
